@@ -32,7 +32,7 @@ import {Widget} from "../common/models/widget.model";
 })
 export class Widgets {
   widgets = [];
-  selectedWidget: Observable<Widget>;
+  selectedWidget: Observable<any>;
 
   constructor(private _widgetsService: WidgetsService,
     private _store: Store<AppStore>) {

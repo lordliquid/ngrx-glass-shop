@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {ItemsService} from '../common/services/items.service.ts';
 import {AppStore} from '../common/models/appstore.model';
@@ -8,18 +8,18 @@ import {ItemsList} from './items-list.component';
 import {ItemDetail} from './item-detail.component';
 
 import {Gadget} from '../common/models/gadget.model';
-import {GadgetService} from '../common/services/gadget.service.ts'
+import {GadgetService} from '../common/services/gadget.service.ts';
 
 @Component({
   selector: 'items',
   template: `
   <div class="mdl-grid items">
-    <div class="mdl-cell mdl-cell--6-col">
+    <div class="mdl-cell">
       <items-list [items]="items | async"
         (selected)="selectItem($event)" (deleted)="deleteItem($event)">
       </items-list>
     </div>
-    <div class="mdl-cell mdl-cell--6-col">
+    <div class="right">
       <item-detail
         (saved)="saveItem($event)" (cancelled)="resetItem($event)"
         [item]="selectedItem | async">Select an Item</item-detail>
@@ -36,7 +36,7 @@ import {GadgetService} from '../common/services/gadget.service.ts'
 })
 export class Items {
   items: Observable<Array<Item>>;
-  selectedItem: Observable<Item>;
+  selectedItem: Observable<any>;
   gadget: Observable<Gadget>;
 
   constructor(private itemsService: ItemsService,

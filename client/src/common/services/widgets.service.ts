@@ -1,6 +1,6 @@
 import {Http, Headers} from '@angular/http';
 import {Injectable} from '@angular/core';
-import {Widget} from "../models/widget.model";
+import {Widget} from '../models/widget.model';
 
 const BASE_URL = 'http://localhost:3000/widgets/';
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
@@ -11,7 +11,7 @@ export class WidgetsService {
 
   constructor(private http: Http) {}
 
-  add(widget: Widget){
+  add(widget: Widget) {
     // this.widgets = [...this.widgets, widget];
     return this.http.post(BASE_URL, JSON.stringify(widget), HEADER)
     .map(res => res.json())
@@ -21,17 +21,17 @@ export class WidgetsService {
     });
   }
 
-  remove(widget: Widget){
+  remove(widget: Widget) {
     return this.http.delete(`${BASE_URL}?id=${widget.id}`)
     .map(res => res.json())
     .do(removed => {
       this.widgets = this.widgets.filter(
         (currentWidget) => currentWidget.id !== removed.id
       );
-    })
+    });
   }
 
-  update(widget: Widget, update){
+  update(widget: Widget, update) {
 
     return this.http.put(`${BASE_URL}?id=${widget.id}`, JSON.stringify(update), HEADER)
     .map(res => res.json())
@@ -41,13 +41,13 @@ export class WidgetsService {
         ...this.widgets.slice(0, index),
         updated,
         ...this.widgets.slice(index + 1)
-      ]
-    })
+      ];
+    });
   }
 
   loadWidgets() {
     return this.http.get(BASE_URL)
       .map(res => res.json())
-      .do(json => this.widgets = [...this.widgets, ...json])
+      .do(json => this.widgets = [...this.widgets, ...json]);
     }
 }
