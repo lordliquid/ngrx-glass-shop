@@ -1,0 +1,75 @@
+{
+  "items": [
+    {
+      "id": 3,
+      "name": "Item 3",
+      "description": "This is a lovely item"
+    },
+    {
+      "name": "hghg",
+      "description": "gfhg",
+      "id": 4
+    }
+  ],
+  "widgets": [
+    {
+      "id": 1,
+      "name": "Widget 1",
+      "price": 100
+    },
+    {
+      "id": 2,
+      "name": "Widget 2",
+      "price": 200
+    },
+    {
+      "id": 3,
+      "name": "Widget 3",
+      "price": 300
+    }
+  ],
+  "customers": [
+    {
+      "name": "dfdf",
+      "phone": "dfdf",
+      "address": "dfdf",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "fgfg",
+      "phone": "fgfg",
+      "address": "fgfg"
+    },
+    {
+      "id": 3,
+      "name": "fgfg",
+      "phone": "fgfg",
+      "address": "fgfg"
+    },
+    {
+      "name": "dfdf",
+      "phone": "dfdf",
+      "address": "dfdf",
+      "id": 4
+    },
+    {
+      "name": "dfd",
+      "phone": "dfdf",
+      "address": "dfdf",
+      "id": 5
+    },
+    {
+      "name": "df",
+      "phone": "df",
+      "address": "df",
+      "id": 6
+    },
+    {
+      "name": "df",
+      "phone": "df",
+      "address": "df",
+      "id": 7
+    }
+  ]
+}
