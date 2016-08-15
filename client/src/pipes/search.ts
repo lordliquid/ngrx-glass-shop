@@ -12,7 +12,7 @@ export class SearchPipe implements PipeTransform {
     test(term) {
         return function check(item){
             return item.name.toLowerCase().includes(term.toLowerCase())
-            || item.phone.includes(term)
+            || item.phone.toString().includes(term)
             || item.address.includes(term);
         };
     }

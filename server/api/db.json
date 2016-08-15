@@ -30,46 +30,10 @@
   ],
   "customers": [
     {
-      "name": "dfdf",
-      "phone": "dfdf",
-      "address": "dfdf",
-      "id": 1
-    },
-    {
-      "id": 2,
-      "name": "fgfg",
-      "phone": "fgfg",
-      "address": "fgfg"
-    },
-    {
-      "id": 3,
-      "name": "fgfg",
-      "phone": "fgfg",
-      "address": "fgfg"
-    },
-    {
-      "name": "dfdf",
-      "phone": "dfdf",
-      "address": "dfdf",
-      "id": 4
-    },
-    {
-      "name": "dfd",
-      "phone": "dfdf",
-      "address": "dfdf",
-      "id": 5
-    },
-    {
-      "name": "df",
-      "phone": "df",
-      "address": "df",
-      "id": 6
-    },
-    {
-      "name": "df",
-      "phone": "df",
-      "address": "df",
-      "id": 7
+      "id": 1,
+      "name": "Lauren Cutright",
+      "phone": 9039780505,
+      "address": "23000 CR 187"
     }
   ]
 }

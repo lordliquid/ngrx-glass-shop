@@ -1,3 +1,33 @@
+#customerList {
+  min-width: 100%;
+}
+
+#customerAdd {
+  min-width: 100%;
+}
+
+#menuButton {
+  margin-left: 10px;
+}
+
+#deleteButton {
+  max-width: 30px;
+  min-width: 30px;
+  width: 30px;
+  max-height: 30px;
+  min-width: 30px;
+  height: 30px;
+}
+
+#calcField {
+  padding-left: 50px;
+}
+
+#calcLabel {
+  text-align: right;
+  margin-right: 50px;
+}
+
 /*body {
   background-color: whitesmoke;
 }
@@ -49,16 +79,3 @@
 .right {
   margin: 200px;
 }*/
-
-#customerList {
-  min-width: 100%;
-}
-
-#customerAdd {
-  min-width: 100%;
-}
-
-*:focus {
-  outline: saddlebrown;
-  border: firebrick;
-}

@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
     template: require('./calculator.component.html'),
 })
 export class Calculator {
-    
     showList: boolean = false;
 
     unit: any = {
@@ -22,9 +21,7 @@ export class Calculator {
         linearInch: 0
     }
 
-    constructor() {
-        
-    }
+    constructor() { }
 
     calculate() {
         let sqrInch = this.unit.width * this.unit.height;

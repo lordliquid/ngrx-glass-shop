@@ -9,12 +9,13 @@ import {Gadget} from '../common/models/gadget.model';
 import {Store} from '@ngrx/store';
 import {AppStore} from '../common/models/appstore.model';
 import {Observable} from 'rxjs/Observable';
+import {CustomerOptions} from './customer-options';
 
 @Component({
     selector: 'customer-main',
-    directives: [CustomerSearch, CustomerList, CustomerAdd],
+    directives: [CustomerSearch, CustomerList, CustomerAdd, CustomerOptions],
     providers: [CustomerService],
-    template : `
+    template: `
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell mdl-cell--6-col">
                 <customer-search id="customerSearch"
@@ -24,7 +25,8 @@ import {Observable} from 'rxjs/Observable';
                     [customers]="customers | async"
                     (selected)="selectCustomer($event)" 
                     (deleted)="deleteCustomer($event)"
-                    [(term)]="term">
+                    [(term)]="term"
+                    (event)="eventOptions($event)">
                 </customer-list>
             </div>
             <div class="mdl-cell mdl-cell mdl-cell--6-col">
@@ -45,8 +47,8 @@ export class Customers {
     selectedCustomer: Observable<any>;
 
     constructor(private customerService: CustomerService,
-                private gadgetService: GadgetService,
-                private store: Store<AppStore>) {
+        private gadgetService: GadgetService,
+        private store: Store<AppStore>) {
         this.customers = customerService.customers;
         this.selectedCustomer = store.select('selectedCustomer');
         this.selectedCustomer.subscribe(v => console.log(v));
@@ -55,32 +57,45 @@ export class Customers {
         customerService.loadCustomers();
     }
 
-resetCustomer() {
-    let emptyCustomer: Customer = {id: null, name: '', phone: '', address: ''};
-    this.store.dispatch({type: 'SELECT_CUSTOMER', payload: emptyCustomer});
-  }
+    resetCustomer() {
+        let emptyCustomer: Customer = { id: null, name: '', phone: '', address: '' };
+        this.store.dispatch({ type: 'SELECT_CUSTOMER', payload: emptyCustomer });
+    }
 
-  selectCustomer(customer: Customer) {
-    this.store.dispatch({type: 'SELECT_CUSTOMER', payload: customer});
-  }
+    selectCustomer(customer: Customer) {
+        this.store.dispatch({ type: 'SELECT_CUSTOMER', payload: customer });
+    }
 
-  saveCustomer(customer: Customer) {
-    this.customerService.saveCustomer(customer);
+    saveCustomer(customer: Customer) {
+        this.customerService.saveCustomer(customer);
 
-    // Generally, we would want to wait for the result of `customersService.saveCustomer`
-    // before resetting the current customer.
-    this.resetCustomer();
-  }
+        // Generally, we would want to wait for the result of `customersService.saveCustomer`
+        // before resetting the current customer.
+        this.resetCustomer();
+    }
 
-  deleteCustomer(customer: Customer) {
-    this.customerService.deleteCustomer(customer);
+    deleteCustomer(customer: Customer) {
+        this.customerService.deleteCustomer(customer);
 
-    // Generally, we would want to wait for the result of `customersService.deleteCustomer`
-    // before resetting the current customer.
-    this.resetCustomer();
-  }
+        // Generally, we would want to wait for the result of `customersService.deleteCustomer`
+        // before resetting the current customer.
+        this.resetCustomer();
+    }
 
-  searchCustomer() {
-      this.customerService.searchCustomer(this.term);
-  }
+    searchCustomer() {
+        this.customerService.searchCustomer(this.term);
+    }
+
+    eventOptions(event: any) {
+        console.log('event: ', event.option);
+        console.log('customer: ', event.arg);
+
+        switch (event.option) {
+            case 'DELETE':
+                this.deleteCustomer(event.arg);
+                return;
+            default:
+                console.log('Error');
+        }
+    }
 }

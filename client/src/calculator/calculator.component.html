@@ -26,20 +26,20 @@
 
   <hr>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="width" [(ngModel)]="unit.width" (keyup)='calculate()'>
+  <div class="mdl-textfield" id="calcField">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="width" [(ngModel)]="unit.width" (keyup)='calculate()' onClick="this.select();">
     <label class="mdl-textfield__label" for="width" id="calcLabel">Width</label>
     <span class="mdl-textfield__error">Input is not a number!</span>
   </div>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="height" [(ngModel)]="unit.height" (keyup)='calculate()'>
+  <div class="mdl-textfield" id="calcField">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="height" [(ngModel)]="unit.height" (keyup)='calculate()' onClick="this.select();">
     <label class="mdl-textfield__label" for="height" id="calcLabel">Height</label>
     <span class="mdl-textfield__error">Input is not a number!</span>
   </div>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price" [(ngModel)]="unit.price" (keyup)='calculate()'>
+  <div class="mdl-textfield" id="calcField">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price" [(ngModel)]="unit.price" (keyup)='calculate()' onClick="this.select();">
     <label class="mdl-textfield__label" for="price" id="calcLabel">Price</label>
     <span class="mdl-textfield__error">Input is not a number!</span>
   </div>
