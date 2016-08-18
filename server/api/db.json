@@ -34,6 +34,25 @@
       "name": "Lauren Cutright",
       "phone": 9039780505,
       "address": "23000 CR 187"
+    },
+    {
+      "name": "Robert",
+      "phone": 9039780505,
+      "address": "23000 CR 187",
+      "id": 2
+    }
+  ],
+  "stock": [
+    {
+      "id": 1,
+      "name": "Mirror",
+      "thickness": "1/4",
+      "width": 100,
+      "height": 48,
+      "description": "1/4 Mirror",
+      "priceA": 2.35,
+      "priceT": null,
+      "priceCut": 3.69
     }
   ]
 }

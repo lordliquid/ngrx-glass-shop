@@ -16,7 +16,7 @@ import {Customer} from '../common/models/customer.model';
                             <label class="mdl-textfield__label" for="search">Name</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number"
+                            <input #phone class="mdl-textfield__input" type="text"
                                 [(ngModel)]="newCustomer.phone">
                             <label class="mdl-textfield__label" for="search">Phone</label>
                         </div>

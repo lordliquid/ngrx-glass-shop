@@ -1,9 +1,10 @@
 export interface Glass {
     id: number;
     thickness: Thickness;
+    color: Color;
 };
 
-enum Thickness {
+export enum Thickness {
     '1/32' = .03125,
     '1/16' = .0625,
     '3/32' = .09375,
@@ -35,6 +36,11 @@ enum Thickness {
     '29/32' = .90625,
     '15/16' = .9375,
     '31/32' = .96875,
-    'Inch' = 1,    
+    'Inch' = 1
+}
+
+export class Color {
+    Clear: 'Clear';
+    Rain: 'Rain';
 }
 

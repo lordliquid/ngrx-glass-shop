@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {Stock} from '../common/models/stock.model';
+import {Thickness, Glass, Color} from '../common/models/glass.model';
 
 @Component({
     selector: 'calculator',
@@ -6,39 +8,57 @@ import {Component} from '@angular/core';
 })
 export class Calculator {
     showList: boolean = false;
+    stock: Stock;
 
     unit: any = {
         type: 'Mirror',
         width: 0,
         height: 0,
-        result: 0,
-        sqrFt: 0,
         price: 0,
+        result: 0,
+        linearInch: 0,
+        subtotal: 0,
+        sqrFt: 0,
+        quantity: 1,
         tempered: false,
         bars: false,
         canTemper: false,
         canBar: false,
-        linearInch: 0
+
+        getLinearInch: () => (this.unit.width * 2) + (this.unit.height * 2),
+
+        getSqrFt: () => this.unit.width * this.unit.height / 144,
+
+        getResult: () => this.unit.price * this.unit.sqrFt,
+
+        getSubtotal: () => this.unit.quantity * this.unit.result
+    };
+
+    constructor() {
+
     }
 
-    constructor() { }
+    addStockItem(item: Stock) {
+        this.stock = {
+            id: item.id,
+            name: item.name,
+            thickness: item.thickness,
+            width: item.width,
+            height: item.height,
+            description: item.description,
+            priceA: item.priceA,
+            priceT: item.priceT,
+            priceCut: item.priceCut
+        };
+    }
 
     calculate() {
-        let sqrInch = this.unit.width * this.unit.height;
-        this.unit.result = 0;
+        this.unit.sqrFt = this.unit.getSqrFt();
+        this.unit.linearInch = this.unit.getLinearInch();
+        this.unit.result = this.unit.getResult();
+        this.unit.subtotal = this.unit.getSubtotal();
 
-        this.unit.sqrFt = this.round(sqrInch / 144);
-
-        this.unit.linearInch = this.rectangleLinearInch(this.unit.width, this.unit.height);
-        this.addToTotal(this.unit.sqrFt * this.unit.price);
-
-        if (isNaN(this.unit.result)) {
-            this.unit.result = 0;
-        }
-    }
-
-    addToTotal(amount) {
-        this.unit.result += this.round(amount);
+        console.log('Current Unit: ', this.unit);
     }
 
     round(num): number {
@@ -64,9 +84,5 @@ export class Calculator {
 
     toggleList() {
         this.showList = !this.showList;
-    }
-
-    rectangleLinearInch(width, height) {
-        return (width * 2) + (height * 2);
     }
 }

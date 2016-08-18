@@ -44,6 +44,12 @@
     <span class="mdl-textfield__error">Input is not a number!</span>
   </div>
 
+    <div class="mdl-textfield" id="calcField">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="quantity" [(ngModel)]="unit.quantity" (keyup)='calculate()' onClick="this.select();">
+    <label class="mdl-textfield__label" for="price" id="calcLabel">Quantity</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+  </div>
+
   <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="tempered">
         <input type="checkbox" id="tempered" class="mdl-switch__input" [(ngModel)]="unit.tempered" [disabled]="!unit.canTemper">
         <span class="mdl-switch__label">Tempered</span>    
@@ -61,7 +67,7 @@
   <tbody>
 
     <tr *ngIf="unit.sqrFt">
-      <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.sqrFt">SqrFt: {{unit.sqrFt}}</td>
+      <td class="mdl-data-table__cell--non-numeric">SqrFt: {{unit.sqrFt}}</td>
     </tr>
         
     <tr *ngIf="unit.linearInch">
@@ -69,7 +75,11 @@
     </tr>
 
     <tr *ngIf="unit.result">
-      <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.result">Subtotal: ${{unit.result}}</td>
+      <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.result">Each: ${{unit.result}}</td>
+    </tr>
+
+    <tr *ngIf="unit.subtotal">
+      <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.subtotal">Subtotal: ${{unit.subtotal}}</td>
     </tr>
 
     <tr *ngIf="unit.tempered">
