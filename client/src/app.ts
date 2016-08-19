@@ -8,6 +8,7 @@ import {Calculator} from './calculator/calculator.component';
 import {Devtools} from '@ngrx/devtools';
 
 import {AppStore} from './common/models/appstore.model';
+import {StockDetail} from './stock/stock-details';
 
 @Component({
   selector: 'my-app',
@@ -19,21 +20,24 @@ import {AppStore} from './common/models/appstore.model';
   { path: '/items', component: Items },
   { path: '/calculator', component: Calculator },
   { path: '/customers', component: Customers },
-  { path: '/stock', component: StockComponent}
+  { path: '/stock', component: StockComponent},
+  { path: '/details/:id', component: StockDetail }
 ])
 export class App {
+  @Input() link: any;
   public links = {
     items: ['/items'],
     calculator: ['/calculator'],
     customers: ['/customers'],
-    stock: ['/stock']
+    stock: ['/stock'],
+    stockDetails: ['/stock/details']
   };
 
   constructor(
     private router: Router
   ) { }
 
-  goTo(location: any) {
+  public goTo(location: any) {
     this.router.navigate(location);
   }
 }

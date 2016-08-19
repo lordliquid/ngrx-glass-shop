@@ -21,6 +21,7 @@ import {customers} from './src/common/stores/customers.store';
 import {CustomerService} from './src/common/services/customers.service';
 import {selectedCustomer} from './src/common/stores/selectedCustomer.store';
 import {stock} from './src/common/stores/stock.store';
+import {selectedStock} from './src/common/stores/selectedStock.store';
 
 bootstrap(App, [
   HTTP_PROVIDERS,
@@ -30,6 +31,14 @@ bootstrap(App, [
   GadgetService,
   CustomerService,
   StockService,
-  provideStore({items, selectedItem, selectedWidget, customers, selectedCustomer, stock}),
+  provideStore({
+    items,
+    selectedItem,
+    selectedWidget,
+    customers,
+    selectedCustomer,
+    stock,
+    selectedStock
+  }),
   instrumentStore()
 ]);

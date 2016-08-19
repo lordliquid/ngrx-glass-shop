@@ -10,28 +10,33 @@ import {Glass} from '../common/models/glass.model';
 
 import {Gadget} from '../common/models/gadget.model';
 import {GadgetService} from '../common/services/gadget.service.ts';
+import {StockDetail} from './stock-details';
 
 @Component({
     selector: 'stock',
-    directives: [StockAdd, StockList],
+    directives: [StockAdd, StockList, StockDetail],
     providers: [StockService],
     template: `
         <h1>Stock</h1>
         <stock-add></stock-add>
-        <stock-list [stock]="stock | async"></stock-list>
+        <stock-list [stock]="stock | async" (selected)="selectStock($event)"></stock-list>
+        <stock-detail [item]="selectedStock | async"></stock-detail>
     `
 })
 export class StockComponent {
+    @Input() stockId: any;
+
     stock: Observable<Array<Stock>>;
-    selectedStockStock: Observable<any>;
+    selectedStock: Observable<any>;
     gadget: Observable<Gadget>;
+
 
     constructor(private stockService: StockService,
                 private gadgetService: GadgetService,
                 private store: Store<AppStore>) {
         this.stock = stockService.stock;
-        this.selectedStockStock = store.select('selectedStockStock');
-        this.selectedStockStock.subscribe(v => console.log(v));
+        this.selectedStock = store.select('selectedStock');
+        this.selectedStock.subscribe(v => console.log(v));
 
         this.gadget = gadgetService.gadget;
 

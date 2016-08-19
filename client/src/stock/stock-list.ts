@@ -1,5 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Stock} from '../common/models/stock.model';
+import {StockDetail} from './stock-details';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'stock-list',
@@ -9,15 +11,17 @@ import {Stock} from '../common/models/stock.model';
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Name</th>
             <th>Description</th>
-            <th>Size</th>
+            <th>Width</th>
+            <th>Height</th>
             <th>Thickness</th>
         </tr>
     </thead>
     <tbody *ngFor="let item of stock">
-        <tr (click)="selectedStock(item)">
+        <tr (click)="selected.emit(item)">
             <td class="mdl-data-table__cell--non-numeric">{{item.name}}</td>
             <td>{{item.description}}</td>
-            <td>{{item.size}}</td> 
+            <td>{{item.width}}</td> 
+            <td>{{item.height}}</td>
             <td>{{item.thickness}}</td>                 
         </tr>
     </tbody>
@@ -26,9 +30,5 @@ import {Stock} from '../common/models/stock.model';
 })
 export class StockList {
     @Input() stock: Stock[];
-
-    currentStockItem: Stock;
-    selectedCustomer(stockItem: Stock) {
-        this.currentStockItem = stockItem;
-    }
+    @Output() selected = new EventEmitter();
 }
