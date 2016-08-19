@@ -27,11 +27,11 @@ export class Calculator {
 
         getLinearInch: () => (this.unit.width * 2) + (this.unit.height * 2),
 
-        getSqrFt: () => this.unit.width * this.unit.height / 144,
+        getSqrFt: () => parseFloat((this.unit.width * this.unit.height / 144).toFixed(2)),
 
-        getResult: () => this.unit.price * this.unit.sqrFt,
+        getResult: () => parseFloat((this.unit.price * this.unit.sqrFt).toFixed(2)),
 
-        getSubtotal: () => this.unit.quantity * this.unit.result
+        getSubtotal: () => parseFloat((this.unit.quantity * this.unit.result).toFixed(2))
     };
 
     constructor() {

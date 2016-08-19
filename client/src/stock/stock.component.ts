@@ -17,10 +17,19 @@ import {StockDetail} from './stock-details';
     directives: [StockAdd, StockList, StockDetail],
     providers: [StockService],
     template: `
-        <h1>Stock</h1>
-        <stock-add></stock-add>
-        <stock-list [stock]="stock | async" (selected)="selectStock($event)"></stock-list>
-        <stock-detail [item]="selectedStock | async"></stock-detail>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell mdl-cell--6-col">
+                <stock-list [stock]="stock | async" (selected)="selectStock($event)"></stock-list>
+            </div>
+            <div class="mdl-cell mdl-cell mdl-cell--6-col">
+                <stock-add (add)="saveStock($event)"
+                    (cancelled)="resetStock($event)"
+                    [stock]="selectedStock | async"></stock-add>
+            </div>
+            <div class="mdl-cell mdl-cell mdl-cell--6-col">
+                <stock-detail [item]="selectedStock | async"></stock-detail>
+            </div>
+        </div>
     `
 })
 export class StockComponent {

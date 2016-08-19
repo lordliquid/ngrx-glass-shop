@@ -6,6 +6,7 @@ import {Stock} from '../common/models/stock.model';
     selector: 'stock-detail',
     template: `
         <h1>Details for {{selectedStock.name}}</h1>
+        <p>{{selectedStock | json}}</p>
     `
 })
 export class StockDetail {
