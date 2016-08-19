@@ -18,22 +18,28 @@ import {StockDetail} from './stock-details';
     providers: [StockService],
     template: `
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell mdl-cell--6-col">
-                <stock-list [stock]="stock | async" (selected)="selectStock($event)"></stock-list>
+            <div class="mdl-cell mdl-cell mdl-cell--6-col" *ngIf="showStockList">
+                <stock-list 
+                    [stock]="stock | async" 
+                    (selected)="selectStock($event)"
+                    (cancel)="resetStock($event)"></stock-list>
             </div>
-            <div class="mdl-cell mdl-cell mdl-cell--6-col">
-                <stock-add (add)="saveStock($event)"
-                    (cancelled)="resetStock($event)"
+            <div class="mdl-cell mdl-cell mdl-cell--6-col" *ngIf="showStockList">
+                <stock-add (add)="saveStock($event)"                    
                     [stock]="selectedStock | async"></stock-add>
             </div>
-            <div class="mdl-cell mdl-cell mdl-cell--6-col">
-                <stock-detail [item]="selectedStock | async"></stock-detail>
+            <div class="mdl-cell mdl-cell mdl-cell--6-col" [hidden]="showStockList">
+                <stock-detail 
+                    [item]="selectedStock | async"
+                    (cancelled)="resetStock($event)"
+                ></stock-detail>
             </div>
         </div>
     `
 })
 export class StockComponent {
     @Input() stockId: any;
+    showStockList: boolean = true;
 
     stock: Observable<Array<Stock>>;
     selectedStock: Observable<any>;
@@ -48,27 +54,31 @@ export class StockComponent {
         this.selectedStock.subscribe(v => console.log(v));
 
         this.gadget = gadgetService.gadget;
-
         stockService.loadStocks();
     }
 
     resetStock() {
-        let emptyStock: Stock = {
-            id: null,
-            name: '',
-            description: '',
-            thickness: null,
-            width: null,
-            height: null,
-            priceA: null,
-            priceT: null,
-            priceCut: null
-        };
-    this.store.dispatch({type: 'SELECT_STOCK', payload: emptyStock});
+        // let emptyStock: Stock = {
+        //     id: null,
+        //     name: '',
+        //     description: '',
+        //     thickness: null,
+        //     width: null,
+        //     height: null,
+        //     priceA: null,
+        //     priceT: null,
+        //     priceCut: null
+        // };
+        let emptyStock: Stock;
+        console.log('first empty: ', emptyStock);
+        this.store.dispatch({ type: 'SELECT_STOCK', payload: emptyStock });
+        this.showStockList = true;
+        console.log('last empty: ', emptyStock);
   }
 
   selectStock(stock: Stock) {
-    this.store.dispatch({type: 'SELECT_STOCK', payload: stock});
+      this.store.dispatch({ type: 'SELECT_STOCK', payload: stock });
+      this.showStockList = false;
   }
 
   saveStock(stock: Stock) {

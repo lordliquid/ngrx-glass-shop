@@ -30,6 +30,26 @@ import {Stock} from '../common/models/stock.model';
                 [(ngModel)]="newStock.height">
             <label class="mdl-textfield__label" for="height">Height</label>
         </div>                  
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text"
+                [(ngModel)]="newStock.thickness">
+            <label class="mdl-textfield__label" for="thickness">Thickness</label>
+        </div> 
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text"
+                [(ngModel)]="newStock.priceA">
+            <label class="mdl-textfield__label" for="priceA">Annealed Price</label>
+        </div>    
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text"
+                [(ngModel)]="newStock.priceCut">
+            <label class="mdl-textfield__label" for="priceCut">Cut Size Price</label>
+        </div> 
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text"
+                [(ngModel)]="newStock.priceT">
+            <label class="mdl-textfield__label" for="priceT">Tempered Price</label>
+        </div>              
     </div>
     </form>
 

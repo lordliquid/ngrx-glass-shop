@@ -28,7 +28,7 @@
   margin-right: 50px;
 }
 
-/*body {
+body {
   background-color: whitesmoke;
 }
 .content .mdl-layout__header {
@@ -41,6 +41,7 @@
   margin-right: 8px;
   margin-top: 8px;
 }
+
 .page-content {
   max-width: 1920px;
   min-width: 952px;
@@ -48,6 +49,8 @@
   margin: 0 auto;
   padding: 0;
 }
+
+/*
 .fem-card.mdl-card {
   width: 100%;
   min-height: inherit;
