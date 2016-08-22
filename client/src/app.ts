@@ -4,7 +4,7 @@ import {Items} from './items/items.component';
 import {Customers} from './customers/customers.component';
 import {StockComponent} from './stock/stock.component';
 import {Widgets} from './widgets/widget.component';
-import {Calculator} from './calculator/calculator.component';
+import {Calculator} from './common/calculator/calculator.component';
 import {Devtools} from '@ngrx/devtools';
 
 import {AppStore} from './common/models/appstore.model';

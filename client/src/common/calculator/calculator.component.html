@@ -3,23 +3,13 @@
 <form action="#">
 
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" (click)="toggleList()">
-    {{unit.type}}
+    {{unit.name}}
   </button>
 
   <ul class="demo-list-item mdl-list" *ngIf="showList">
     <li class="mdl-list__item">
       <span class="mdl-list__item-primary-content">
-        Bryan Cranston
-      </span>
-    </li>
-    <li class="mdl-list__item">
-      <span class="mdl-list__item-primary-content">
-        Aaron Paul
-      </span>
-    </li>
-    <li class="mdl-list__item">
-      <span class="mdl-list__item-primary-content">
-        Bob Odenkirk
+          
       </span>
     </li>
   </ul>
@@ -74,8 +64,8 @@
       <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.linearInch">Linear Inch: {{unit.linearInch}}</td>
     </tr>
 
-    <tr *ngIf="unit.result">
-      <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.result">Each: ${{unit.result}}</td>
+    <tr *ngIf="unit.total">
+      <td class="mdl-data-table__cell--non-numeric" *ngIf="unit.total">Each: ${{unit.total}}</td>
     </tr>
 
     <tr *ngIf="unit.subtotal">

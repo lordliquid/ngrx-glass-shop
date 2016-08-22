@@ -9,7 +9,7 @@ export class ObjectReset {
 
     Reset(obj: any) {
         console.log('from function: ', obj);
-        let newObject: ObjectReset;
+        let newObject: typeof obj;
         let keys: Array<any>;
         keys = Object.keys(obj);
         keys.map(key =>
